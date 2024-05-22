@@ -1,5 +1,5 @@
 
-= Elasticsearch-PHP
+= Elasticsearch PHP Client
 
 :doctype:           book
 
@@ -8,17 +8,15 @@ include::{asciidoc-dir}/../../shared/attributes.asciidoc[]
 
 include::overview.asciidoc[]
 
-include::getting-started.asciidoc[]
-
 include::installation.asciidoc[]
 
 include::connecting.asciidoc[]
 
-include::usage.asciidoc[]
-
 include::configuration.asciidoc[]
 
 include::operations.asciidoc[]
+
+include::build/classes.asciidoc[]
 
 include::helpers.asciidoc[]
 

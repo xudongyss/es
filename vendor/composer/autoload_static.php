@@ -7,9 +7,8 @@ namespace Composer\Autoload;
 class ComposerStaticInite8ae19d1e633c4331b2fa8e4b8204c96
 {
     public static $files = array (
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
-        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'ad155f8f1cf0d418fe49e248db8c661b' => __DIR__ . '/..' . '/react/promise/src/functions_include.php',
+        '8592c7b0947d8a0965a9e8c3d16f9c24' => __DIR__ . '/..' . '/elasticsearch/elasticsearch/src/autoload.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -17,28 +16,22 @@ class ComposerStaticInite8ae19d1e633c4331b2fa8e4b8204c96
         array (
             'xd\\es\\' => 6,
         ),
+        'R' => 
+        array (
+            'React\\Promise\\' => 14,
+        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
-            'Psr\\Http\\Message\\' => 17,
-            'Psr\\Http\\Client\\' => 16,
-        ),
-        'H' => 
-        array (
-            'Http\\Promise\\' => 13,
-            'Http\\Discovery\\' => 15,
-            'Http\\Client\\' => 12,
         ),
         'G' => 
         array (
-            'GuzzleHttp\\Psr7\\' => 16,
-            'GuzzleHttp\\Promise\\' => 19,
-            'GuzzleHttp\\' => 11,
+            'GuzzleHttp\\Stream\\' => 18,
+            'GuzzleHttp\\Ring\\' => 16,
         ),
         'E' => 
         array (
-            'Elastic\\Transport\\' => 18,
-            'Elastic\\Elasticsearch\\' => 22,
+            'Elasticsearch\\' => 14,
         ),
     );
 
@@ -47,50 +40,25 @@ class ComposerStaticInite8ae19d1e633c4331b2fa8e4b8204c96
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
+        'React\\Promise\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/react/promise/src',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
         ),
-        'Psr\\Http\\Message\\' => 
+        'GuzzleHttp\\Stream\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/ezimuel/guzzlestreams/src',
         ),
-        'Psr\\Http\\Client\\' => 
+        'GuzzleHttp\\Ring\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-client/src',
+            0 => __DIR__ . '/..' . '/ezimuel/ringphp/src',
         ),
-        'Http\\Promise\\' => 
+        'Elasticsearch\\' => 
         array (
-            0 => __DIR__ . '/..' . '/php-http/promise/src',
-        ),
-        'Http\\Discovery\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/php-http/discovery/src',
-        ),
-        'Http\\Client\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/php-http/httplug/src',
-        ),
-        'GuzzleHttp\\Psr7\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
-        ),
-        'GuzzleHttp\\Promise\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
-        ),
-        'GuzzleHttp\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
-        ),
-        'Elastic\\Transport\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/elastic/transport/src',
-        ),
-        'Elastic\\Elasticsearch\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/elasticsearch/elasticsearch/src',
+            0 => __DIR__ . '/..' . '/elasticsearch/elasticsearch/src/Elasticsearch',
         ),
     );
 
