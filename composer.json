@@ -1,0 +1,15 @@
+{
+    "name": "xd/es",
+    "autoload": {
+        "psr-4": {
+            "xd\\es\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "xudongyss",
+            "email": "xudong.yss@gmail.com"
+        }
+    ],
+    "require": {}
+}
