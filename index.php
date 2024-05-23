@@ -5,8 +5,6 @@ use xd\es\EsClient;
 
 $client = EsClient::client();
 
-echo '<pre>';print_r($client);
-
 try {
     $client->indices()->create([
         'index' => 'for_test',
