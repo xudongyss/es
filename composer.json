@@ -1,8 +1,8 @@
 {
-    "name": "xd/es",
+    "name": "xudongyss/es",
     "autoload": {
         "psr-4": {
-            "xd\\es\\": "src/"
+            "xudongyss\\es\\": "src/"
         },
         "files": [
             "src/helpers.php"

@@ -1,6 +1,5 @@
 <?php
-
-namespace xd\es\index;
+namespace xudongyss\es\index;
 
 /**
  * @method $this setSettingsNumberOfShards($number) 设置分片数

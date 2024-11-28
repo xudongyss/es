@@ -1,6 +1,5 @@
 <?php
-
-namespace xd\es\document\highlight;
+namespace xudongyss\es\document\highlight;
 
 class Field
 {

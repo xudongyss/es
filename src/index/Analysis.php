@@ -1,5 +1,5 @@
 <?php
-namespace xd\es\index;
+namespace xudongyss\es\index;
 
 class Analysis
 {

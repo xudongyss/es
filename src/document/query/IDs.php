@@ -1,5 +1,5 @@
 <?php
-namespace xd\es\document\query;
+namespace xudongyss\es\document\query;
 
 /**
  * IDs 查询

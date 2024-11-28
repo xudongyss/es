@@ -1,9 +1,9 @@
 <?php
-namespace xd\es\document;
+namespace xudongyss\es\document;
 
-use xd\es\document\highlight\Field;
-use xd\es\document\query\QueryBool;
-use xd\es\document\query\Query;
+use xudongyss\es\document\highlight\Field;
+use xudongyss\es\document\query\QueryBool;
+use xudongyss\es\document\query\Query;
 
 /**
  * @method $this setQueryBoolMust(Query $query) 设置must条件

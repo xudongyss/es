@@ -1,7 +1,7 @@
 <?php
-namespace xd\es\document;
+namespace xudongyss\es\document;
 
-use xd\es\document\highlight\Field;
+use xudongyss\es\document\highlight\Field;
 
 class Highlight
 {

@@ -1,6 +1,5 @@
 <?php
-
-namespace xd\es\document;
+namespace xudongyss\es\document;
 
 class Sort
 {

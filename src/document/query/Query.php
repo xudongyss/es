@@ -1,6 +1,5 @@
 <?php
-
-namespace xd\es\document\query;
+namespace xudongyss\es\document\query;
 
 abstract class Query
 {

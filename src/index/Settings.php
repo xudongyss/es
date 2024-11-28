@@ -1,5 +1,5 @@
 <?php
-namespace xd\es\index;
+namespace xudongyss\es\index;
 
 /**
  * @method $this setNumberOfShards(Tokenizer $tokenizer) 设置分片数

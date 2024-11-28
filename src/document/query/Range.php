@@ -1,6 +1,5 @@
 <?php
-
-namespace xd\es\document\query;
+namespace xudongyss\es\document\query;
 
 /**
  * 范围查询

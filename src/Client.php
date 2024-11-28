@@ -1,5 +1,5 @@
 <?php
-namespace xd\es;
+namespace xudongyss\es;
 
 use Elastic\Elasticsearch\ClientBuilder;
 use Elastic\Elasticsearch\Endpoints\Indices;

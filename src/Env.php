@@ -1,5 +1,5 @@
 <?php
-namespace xd\es;
+namespace xudongyss\es;
 
 use Dotenv\Repository\Adapter\PutenvAdapter;
 use Dotenv\Repository\RepositoryBuilder;
