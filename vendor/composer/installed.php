@@ -3,7 +3,7 @@
         'name' => 'xd/es',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '9dd19f2658761c7d50e5cab8d19abb1586d51fa8',
+        'reference' => 'a35f08ff5f736605bdc03a014178d3d56b71d36a',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -262,7 +262,7 @@
         'xd/es' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '9dd19f2658761c7d50e5cab8d19abb1586d51fa8',
+            'reference' => 'a35f08ff5f736605bdc03a014178d3d56b71d36a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

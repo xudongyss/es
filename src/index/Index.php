@@ -3,8 +3,8 @@
 namespace xd\es\index;
 
 /**
- * @method $this setSettingsNumberOfShards($number)
- * @method $this setSettingsNumberOfReplicas($number)
+ * @method $this setSettingsNumberOfShards($number) 设置分片数
+ * @method $this setSettingsNumberOfReplicas($number) 设置副本数
  * @method $this setSettingsAnalysisTokenizer(Tokenizer $tokenizer)
  * @method $this setSettingsAnalysisAnalyzer(Analyzer $analyzer)
  * @method $this setMappingsProperties(Propertie $properties)

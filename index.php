@@ -4,7 +4,7 @@ require_once 'vendor/autoload.php';
 use xd\es\Client;
 use xd\es\index\Index;
 use xd\es\index\Analyzer;
-use \xd\es\index\Propertie;
+use xd\es\index\Propertie;
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
@@ -53,13 +53,13 @@ try {
             'create_time' => '2024-05-23 11:22:50',
         ]
     ];
-    Client::index($params);
+//    Client::index($params);
     $params = [
         'index' => 'jxzrzyhgh',
         'body' => [
             'query' => [
                 'multi_match' => [
-                    'query' => '江夏',
+                    'query' => '武汉华腾汽车零部件有限公司武汉华腾汽车零部件新建项目规划方案批前公示',
                     'fields' => ['title', 'content'],
                 ]
             ]
@@ -75,6 +75,12 @@ try {
         ]
     ];
 //    $response = Client::indices()->analyze($params);print_r(json_decode((string)$response->getBody(), true));
+
+    $params = [
+        'index' => 'jxzrzyhgh',
+        'id'    => '9jPzbJMB0Gp5RZvesbGd'
+    ];
+//    Client::delete($params);
 } catch (\Exception $e) {
     echo $e->getTraceAsString();
     echo $e->getMessage();

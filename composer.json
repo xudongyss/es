@@ -3,7 +3,10 @@
     "autoload": {
         "psr-4": {
             "xd\\es\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "authors": [
         {

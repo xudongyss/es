@@ -2,6 +2,8 @@
 namespace xd\es\index;
 
 /**
+ * @method $this setNumberOfShards(Tokenizer $tokenizer) 设置分片数
+ * @method $this setNumberOfReplicas(Tokenizer $tokenizer) 设置副本数
  * @method $this setAnalysisTokenizer(Tokenizer $tokenizer)
  * @method $this setAnalysisAnalyzer(Analyzer $analyzer)
  */
@@ -34,21 +36,10 @@ class Settings
      * @param $number
      * @return $this
      */
-    public function setNumberOfShards($number)
-    {
-        $this->settings['number_of_shards'] = $number;
 
-        return $this;
-    }
-
-    /**
-     * 设置副本数
-     * @param $number
-     * @return $this
-     */
-    public function setNumberOfReplicas($number)
+    public function set($name, $value)
     {
-        $this->settings['number_of_replicas'] = $number;
+        $this->settings[$name] = $value;
 
         return $this;
     }
@@ -82,6 +73,10 @@ class Settings
         if ($attribute) {
             $name = str_replace(ucfirst($attribute), '', $name);
             call_user_func_array([$this->$attribute, $name], $arguments);
+        } else {
+            $name = parse_name(str_replace('set', '', $name));
+
+            call_user_func_array([$this, 'set'], array_merge([$name], $arguments));
         }
 
         return $this;
