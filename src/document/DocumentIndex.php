@@ -1,11 +1,13 @@
 <?php
 namespace xd\es\document;
 
-class Delete
+class DocumentIndex
 {
     private $index;
 
     private $id;
+
+    private $body;
 
     public static function create()
     {
@@ -26,11 +28,24 @@ class Delete
         return $this;
     }
 
+    public function setBody(array $body)
+    {
+        $this->body = $body;
+
+        return $this;
+    }
+
     public function build()
     {
-        return [
+        $data = [
             'index' => $this->index,
-            'id' => $this->id
+            'body' => $this->body,
         ];
+
+        if ($this->id) {
+            $data['id'] = $this->id;
+        }
+
+        return $data;
     }
 }

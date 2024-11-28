@@ -32,7 +32,7 @@ try {
             ->setType('date')
             ->setFormat('yyyy-MM-dd HH:mm:ss'))
         ->build();
-//    Client::indices()->create($index);exit();
+//    Client::indices()->create($index);
     $params = [
         'index' => 'jxzrzyhgh',
         'body' => [
@@ -58,10 +58,22 @@ try {
         'index' => 'jxzrzyhgh',
         'body' => [
             'query' => [
-                'multi_match' => [
-                    'query' => '武汉华腾汽车零部件有限公司武汉华腾汽车零部件新建项目规划方案批前公示',
-                    'fields' => ['title', 'content'],
-                ]
+                'bool' => [
+                    'should' => [
+                        [
+                            'multi_match' => [
+                                'query' => '武汉',
+                                'fields' => ['title', 'content'],
+                            ]
+                        ],
+                        [
+                            'multi_match' => [
+                                'query' => '江夏',
+                                'fields' => ['title', 'content'],
+                            ]
+                        ]
+                    ]
+                ],
             ]
         ]
     ];
