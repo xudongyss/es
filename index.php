@@ -76,11 +76,15 @@ try {
     ];
 //    $response = Client::indices()->analyze($params);print_r(json_decode((string)$response->getBody(), true));
 
-    $params = [
-        'index' => 'jxzrzyhgh',
-        'id'    => '9jPzbJMB0Gp5RZvesbGd'
-    ];
-//    Client::delete($params);
+    // 删除文档
+//    Client::delete(\xd\es\document\Delete::create()
+//        ->setIndex('jxzrzyhgh')
+//        ->setId('9jPzbJMB0Gp5RZvesbGd')
+//        ->build());
+    // 删除索引
+//    Client::indices()->delete(\xd\es\index\Delete::create()
+//        ->setIndex("jxzrzyhgh")
+//        ->build());
 } catch (\Exception $e) {
     echo $e->getTraceAsString();
     echo $e->getMessage();
