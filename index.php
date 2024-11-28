@@ -5,6 +5,9 @@ use xd\es\Client;
 use xd\es\index\Index;
 use xd\es\index\Analyzer;
 use xd\es\index\Propertie;
+use xd\es\document\Search;
+use xd\es\document\query\MultiMatch;
+use xd\es\document\highlight\Field;
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
@@ -77,6 +80,17 @@ try {
             ]
         ]
     ];
+    $params = Search::create()
+        ->setIndex('jxzrzyhgh')
+        ->setQueryBoolShould(MultiMatch::create()
+            ->setQuery('武汉江夏')
+            ->setFields(['title', 'content']))
+        ->setHighlightFields(Field::create()
+            ->setField('title'))
+        ->setHighlightFields(Field::create()
+            ->setField('content'))
+        ->build();
+    print_r($params);
     $list = Client::search($params);print_r(json_decode((string)$list->getBody(), true));
 
     $params = [
