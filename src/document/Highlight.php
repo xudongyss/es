@@ -5,7 +5,7 @@ use xudongyss\es\document\highlight\Field;
 
 class Highlight
 {
-    private $fields;
+    private $fields = [];
 
     public static function create()
     {
