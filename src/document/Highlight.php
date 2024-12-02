@@ -21,8 +21,12 @@ class Highlight
 
     public function build()
     {
-        return [
-            'fields' => $this->fields
-        ];
+        if (count($this->fields)) {
+            return [
+                'fields' => $this->fields
+            ];
+        }
+
+        return [];
     }
 }
