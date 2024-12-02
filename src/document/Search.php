@@ -4,11 +4,14 @@ namespace xudongyss\es\document;
 use xudongyss\es\document\highlight\Field;
 use xudongyss\es\document\query\QueryBool;
 use xudongyss\es\document\query\Query;
+use xudongyss\es\document\search\Source;
 
 /**
  * @method $this setQueryBoolMust(Query $query) 设置must条件
  * @method $this setQueryBoolShould(Query $query) 设置should条件
  * @method $this setQueryBoolMustNot(Query $query) 设置must_not条件
+ * @method $this setSourceIncludes(array|string $includes) 设置返回字段
+ * @method $this setSourceExcludes(array|string $excludes) 设置不返回字段
  * @method $this setHighlightFields(Field $field) 设置高亮字段
  */
 class Search
@@ -16,6 +19,10 @@ class Search
     private $index;
 
     private $bool;
+
+    private $fields;
+
+    private $source;
 
     private $from;
 
@@ -29,6 +36,7 @@ class Search
     {
         $this->bool = QueryBool::create();
         $this->highlight = Highlight::create();
+        $this->source = Source::create();
     }
 
     public static function create()
@@ -39,6 +47,13 @@ class Search
     public function setIndex($index)
     {
         $this->index = $index;
+
+        return $this;
+    }
+
+    public function setFields($fields)
+    {
+        $this->fields = $fields;
 
         return $this;
     }
@@ -78,16 +93,26 @@ class Search
             $data['body']['query']['bool'] = $bool;
         }
 
+        if ($this->fields) {
+            $data['body']['fields'] = $this->fields;
+        }
+
+        $source = $this->source->build();
+        print_r($source);
+        if ($source) {
+            $data['body']['_source'] = $source;
+        }
+
         if ($this->from) {
-            $data['from'] = $this->from;
+            $data['body']['from'] = $this->from;
         }
 
         if ($this->size) {
-            $data['size'] = $this->size;
+            $data['body']['size'] = $this->size;
         }
 
         if ($this->sort) {
-            $data['sort'] = $this->sort;
+            $data['body']['sort'] = $this->sort;
         }
 
         $highlight = $this->highlight->build();
@@ -110,6 +135,13 @@ class Search
         if (str_starts_with($name, 'setHighlight')) {
             $method = substr($name, 12);
             call_user_func_array([$this->highlight, 'set' . $method], $arguments);
+
+            return $this;
+        }
+
+        if (str_starts_with($name, 'setSource')) {
+            $method = substr($name, 9);
+            call_user_func_array([$this->source, 'set' . $method], $arguments);
 
             return $this;
         }
