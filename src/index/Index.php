@@ -1,14 +1,14 @@
 <?php
 namespace xudongyss\es\index;
 
-use xudongyss\es\index\mappings\Propertie;
+use xudongyss\es\index\mappings\properties\Field;
 
 /**
  * @method $this setSettingsNumberOfShards($number) 设置分片数
  * @method $this setSettingsNumberOfReplicas($number) 设置副本数
  * @method $this setSettingsAnalysisTokenizer(Tokenizer $tokenizer)
  * @method $this setSettingsAnalysisAnalyzer(Analyzer $analyzer)
- * @method $this setMappingsProperties(Propertie $properties)
+ * @method $this setMappingsProperties(Field $properties)
  */
 class Index
 {
