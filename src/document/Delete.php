@@ -1,7 +1,7 @@
 <?php
 namespace xudongyss\es\document;
 
-class DocumentDelete
+class Delete
 {
     private $index;
 

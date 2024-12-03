@@ -18,6 +18,8 @@ class Search
 {
     private $index;
 
+    private $query;
+
     private $bool;
 
     private $fields;
@@ -47,6 +49,13 @@ class Search
     public function setIndex($index)
     {
         $this->index = $index;
+
+        return $this;
+    }
+
+    public function setQuery(Query $query)
+    {
+        $this->query = $query;
 
         return $this;
     }
@@ -87,6 +96,10 @@ class Search
                 'query' => [],
             ],
         ];
+
+        if ($this->query) {
+            $data['body']['query'] = $this->query->build();
+        }
 
         $bool = $this->bool->build();
         if ($bool) {

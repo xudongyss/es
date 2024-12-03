@@ -1,7 +1,7 @@
 <?php
 namespace xudongyss\es\document;
 
-class DocumentIndex
+class Index
 {
     private $index;
 
