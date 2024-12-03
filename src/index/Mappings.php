@@ -1,13 +1,11 @@
 <?php
 namespace xudongyss\es\index;
 
+use xudongyss\es\index\mappings\properties\Field;
+
 class Mappings
 {
     private $properties;
-
-    private $callMap = [
-        'setProperties' => 'properties',
-    ];
 
     public function __construct()
     {
@@ -19,9 +17,9 @@ class Mappings
         return new static();
     }
 
-    public function setProperties(Propertie $propertie)
+    public function setProperties(Field $field)
     {
-        $this->properties[$propertie->getFiled()] = $propertie->build();
+        $this->properties[$field->getFiled()] = $field->build();
 
         return $this;
     }

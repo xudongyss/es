@@ -1,6 +1,8 @@
 <?php
 namespace xudongyss\es\index;
 
+use xudongyss\es\index\mappings\Propertie;
+
 /**
  * @method $this setSettingsNumberOfShards($number) 设置分片数
  * @method $this setSettingsNumberOfReplicas($number) 设置副本数

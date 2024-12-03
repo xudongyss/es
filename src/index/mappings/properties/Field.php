@@ -1,7 +1,7 @@
 <?php
-namespace xudongyss\es\index;
+namespace xudongyss\es\index\mappings\properties;
 
-class Propertie
+class Field
 {
     private $field;
 
@@ -10,6 +10,8 @@ class Propertie
     private $analyzer;
 
     private $format;
+
+    private $fields;
 
     public static function create()
     {
@@ -49,6 +51,13 @@ class Propertie
         return $this;
     }
 
+    public function setFields(Field $field)
+    {
+        $this->fields[$field->getFiled()] = $field->build();
+
+        return $this;
+    }
+
     public function build()
     {
         $data = [];
@@ -62,6 +71,10 @@ class Propertie
 
         if ($this->format) {
             $data['format'] = $this->format;
+        }
+
+        if ($this->fields) {
+            $data['fields'] = $this->fields;
         }
 
         return $data;
