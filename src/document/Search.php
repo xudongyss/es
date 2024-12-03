@@ -98,7 +98,6 @@ class Search
         }
 
         $source = $this->source->build();
-        print_r($source);
         if ($source) {
             $data['body']['_source'] = $source;
         }

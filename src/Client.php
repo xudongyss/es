@@ -8,6 +8,7 @@ use Elastic\Elasticsearch\Endpoints\Indices;
  * @method Indices indices()
  * @method index($params) 创建数据
  * @method search($params) 搜索数据
+ * @method get($params) 获取数据
  * @method delete($params) 删除数据
  */
 
