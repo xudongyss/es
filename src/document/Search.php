@@ -5,6 +5,7 @@ use xudongyss\es\document\highlight\Field;
 use xudongyss\es\document\query\QueryBool;
 use xudongyss\es\document\query\Query;
 use xudongyss\es\document\search\Source;
+use xudongyss\es\document\script\Field as ScriptField;
 
 /**
  * @method $this setQueryBoolMust(Query $query) 设置must条件
@@ -23,6 +24,8 @@ class Search
     private $bool;
 
     private $fields;
+
+    private $scriptFields;
 
     private $source;
 
@@ -60,7 +63,14 @@ class Search
         return $this;
     }
 
-    public function setFields($fields)
+    public function setScriptFields(ScriptField $field)
+    {
+        $this->scriptFields[$field->getField()] = $field->build();
+
+        return $this;
+    }
+
+    public function setFields(array $fields)
     {
         $this->fields = $fields;
 
@@ -108,6 +118,10 @@ class Search
 
         if ($this->fields) {
             $data['body']['fields'] = $this->fields;
+        }
+
+        if ($this->scriptFields) {
+            $data['body']['script_fields'] = $this->scriptFields;
         }
 
         $source = $this->source->build();
