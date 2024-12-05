@@ -1,17 +1,22 @@
 # 快速开始
+
 ## 配置
+
 项目入口文件
 ```php
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 ```
+
 配置文件 .env 放在项目入口文件同级目录
 ```bash
 ELASTICSEARCH_HOST=""
 ELASTICSEARCH_USERNAME=""
 ELASTICSEARCH_PASSWORD=""
 ```
+
 ## 创建索引
+
 ```php
 use xudongyss\es\Client;
 use xudongyss\es\index\Index;
@@ -55,6 +60,7 @@ $index = Index::create()
     ->build();
 Client::indices()->create($index);
 ```
+
 ## 插入
 ```php
 use xudongyss\es\Client;
@@ -73,8 +79,11 @@ $params = Index::create()
     ->build();
 Client::index($params);
 ```
+
 ## 搜索
+
 ### match
+
 ```php
 use xudongyss\es\document\highlight\Field;
 use xudongyss\es\document\query\QueryMatch;
@@ -95,6 +104,7 @@ $list = json_decode((string)$list->getBody(), true);
 ```
 
 ### match_phrase
+
 ```php
 use xudongyss\es\document\highlight\Field;
 use xudongyss\es\document\query\MatchPhrase;
@@ -114,21 +124,39 @@ $list = Client::search($params);
 $list = json_decode((string)$list->getBody(), true);
 ```
 
-### query 
+### multi_match
+
 ```php
-use xudongyss\es\Client;
-use xudongyss\es\search\Search;
+use xudongyss\es\document\highlight\Field;
+use xudongyss\es\document\query\MultiMatch;
+use xudongyss\es\document\Search;
 
 $params = Search::create()
     ->setIndex('jxzrzyhgh')
-    ->setQueryBoolShould(MatchPhrase::create()
-        ->setQuery('武汉')
-        ->setField('title'))
+    ->setQueryBoolShould(MultiMatch::create()
+        ->setQuery('藏龙岛')
+        ->setFields(['title'])
+    )
     ->setSourceIncludes(['id', 'title', 'url', 'create_time'])
     ->setHighlightFields(Field::create()
         ->setField('title'))
     ->setSize(10000)
     ->build();
+
+// phrase
+$params = Search::create()
+    ->setIndex('jxzrzyhgh')
+    ->setQueryBoolShould(MultiMatch::create()
+        ->setQuery('藏龙岛')
+        ->setFields(['title'])
+        ->setType('phrase')
+    )
+    ->setSourceIncludes(['id', 'title', 'url', 'create_time'])
+    ->setHighlightFields(Field::create()
+        ->setField('title'))
+    ->setSize(10000)
+    ->build();
+
 $list = Client::search($params);
 $list = json_decode((string)$list->getBody(), true);
 ```

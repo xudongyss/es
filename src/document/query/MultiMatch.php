@@ -7,6 +7,7 @@ class MultiMatch extends Query
 
     private $fields;
 
+    // phrase
     private $type;
 
     public function setQuery($query)
