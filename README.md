@@ -82,7 +82,8 @@ Client::index($params);
 
 ## 搜索
 
-### match
+### query And bool
+#### match
 
 ```php
 use xudongyss\es\document\highlight\Field;
@@ -103,7 +104,7 @@ $list = Client::search($params);
 $list = json_decode((string)$list->getBody(), true);
 ```
 
-### match_phrase
+#### match_phrase
 
 ```php
 use xudongyss\es\document\highlight\Field;
@@ -124,7 +125,7 @@ $list = Client::search($params);
 $list = json_decode((string)$list->getBody(), true);
 ```
 
-### multi_match
+#### multi_match
 
 ```php
 use xudongyss\es\document\highlight\Field;
@@ -159,4 +160,136 @@ $params = Search::create()
 
 $list = Client::search($params);
 $list = json_decode((string)$list->getBody(), true);
+```
+
+#### term
+
+```php
+use xudongyss\es\document\highlight\Field;
+use xudongyss\es\document\query\Term;
+use xudongyss\es\document\Search;
+
+$params = Search::create()
+    ->setIndex('jxzrzyhgh')
+    ->setQueryBoolShould(Term::create()
+        ->setField('url')
+        ->setValue('https://baidu.com')
+    )
+    ->setSourceIncludes(['id', 'title', 'url', 'create_time'])
+    ->setHighlightFields(Field::create()
+        ->setField('title'))
+    ->setSize(10000)
+    ->build();
+
+$list = Client::search($params);
+$list = json_decode((string)$list->getBody(), true);
+```
+
+#### terms
+```php
+use xudongyss\es\document\highlight\Field;
+use xudongyss\es\document\query\Terms;
+use xudongyss\es\document\Search;
+
+$params = Search::create()
+    ->setIndex('jxzrzyhgh')
+    ->setQueryBoolShould(Terms::create()
+        ->setField('url')
+        ->setTerms(['https://baidu.com'])
+    )
+    ->setSourceIncludes(['id', 'title', 'url', 'create_time'])
+    ->setHighlightFields(Field::create()
+        ->setField('title'))
+    ->setSize(10000)
+    ->build();
+
+$list = Client::search($params);
+$list = json_decode((string)$list->getBody(), true);
+```
+
+#### range
+
+```php
+use xudongyss\es\document\highlight\Field;
+use xudongyss\es\document\query\Range;
+use xudongyss\es\document\Search;
+
+$params = Search::create()
+    ->setIndex('jxzrzyhgh')
+    ->setQueryBoolShould(Range::create()
+        ->setField('create_time')
+        ->setGte(date('Y-m-d H:i:s', strtotime('-7 days')))
+        ->setLte(date('Y-m-d H:i:s'))
+    )
+    ->setSourceIncludes(['id', 'title', 'url', 'create_time'])
+    ->setHighlightFields(Field::create()
+        ->setField('title'))
+    ->setSize(10000)
+    ->build();
+
+$list = Client::search($params);
+$list = json_decode((string)$list->getBody(), true);
+```
+
+#### ids
+
+```php
+use xudongyss\es\document\highlight\Field;
+use xudongyss\es\document\query\IDs;
+use xudongyss\es\document\Search;
+
+$params = Search::create()
+    ->setIndex('jxzrzyhgh')
+    ->setQuery(IDs::create()
+        ->setValues([34709, 36923, 42330])
+    )
+    ->setSourceIncludes(['id', 'title', 'url', 'create_time'])
+    ->setHighlightFields(Field::create()
+        ->setField('title'))
+    ->setSize(10000)
+    ->build();
+
+$list = Client::search($params);
+$list = json_decode((string)$list->getBody(), true);
+```
+
+#### geo_distance
+
+```php
+use xudongyss\es\document\query\geo\Distance;
+use xudongyss\es\document\Search;
+
+$params = Search::create()
+    ->setIndex('geo')
+    ->setQuery(Distance::create()
+        ->setField('location')
+        ->setDistance('5km')
+        ->setLocation('30.503151,114.414082')
+    )
+    ->setFields(['name', 'location'])
+    ->build();
+```
+
+### script_fields
+
+```php
+use xudongyss\es\document\query\geo\Distance;
+use xudongyss\es\document\script\Field;
+use xudongyss\es\document\Search;
+
+$params = Search::create()
+    ->setIndex('geo')
+    ->setQuery(Distance::create()
+        ->setField('location')
+        ->setDistance('5km')
+        ->setLocation('30.503151,114.414082')
+    )
+    ->setFields(['name', 'location'])
+    ->setScriptFields(Field::create()
+        ->setField('distance_to_target')
+        ->setSource("doc['location'].arcDistance(params.lat, params.lon)")
+        ->setParams('lat', 30.503151)
+        ->setParams('lon', 114.414082)
+    )
+    ->build();
 ```
