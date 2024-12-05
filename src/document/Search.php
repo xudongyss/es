@@ -93,7 +93,7 @@ class Search
 
     public function setSort(Sort $sort)
     {
-        $this->sort[] = $sort;
+        $this->sort[] = $sort->build();
 
         return $this;
     }

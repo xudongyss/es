@@ -93,7 +93,7 @@ use xudongyss\es\document\Search;
 $params = Search::create()
     ->setIndex('jxzrzyhgh')
     ->setQueryBoolShould(QueryMatch::create()
-        ->setQuery('藏龙岛')
+        ->setQuery('武汉')
         ->setField('title'))
     ->setSourceIncludes(['id', 'title', 'url', 'create_time'])
     ->setHighlightFields(Field::create()
@@ -114,7 +114,7 @@ use xudongyss\es\document\Search;
 $params = Search::create()
     ->setIndex('jxzrzyhgh')
     ->setQueryBoolShould(MatchPhrase::create()
-        ->setQuery('藏龙岛')
+        ->setQuery('武汉')
         ->setField('title'))
     ->setSourceIncludes(['id', 'title', 'url', 'create_time'])
     ->setHighlightFields(Field::create()
@@ -135,7 +135,7 @@ use xudongyss\es\document\Search;
 $params = Search::create()
     ->setIndex('jxzrzyhgh')
     ->setQueryBoolShould(MultiMatch::create()
-        ->setQuery('藏龙岛')
+        ->setQuery('武汉')
         ->setFields(['title'])
     )
     ->setSourceIncludes(['id', 'title', 'url', 'create_time'])
@@ -148,7 +148,7 @@ $params = Search::create()
 $params = Search::create()
     ->setIndex('jxzrzyhgh')
     ->setQueryBoolShould(MultiMatch::create()
-        ->setQuery('藏龙岛')
+        ->setQuery('武汉')
         ->setFields(['title'])
         ->setType('phrase')
     )
@@ -293,3 +293,55 @@ $params = Search::create()
     )
     ->build();
 ```
+
+### fields
+### source
+### from
+
+```php
+use xudongyss\es\document\highlight\Field;
+use xudongyss\es\document\query\QueryMatch;
+use xudongyss\es\document\Search;
+
+$params = Search::create()
+    ->setIndex('jxzrzyhgh')
+    ->setQueryBoolShould(QueryMatch::create()
+        ->setQuery('武汉')
+        ->setField('title'))
+    ->setSourceIncludes(['id', 'title', 'url', 'create_time'])
+    ->setHighlightFields(Field::create()
+        ->setField('title'))
+    ->setFrom(0)
+    ->setSize(5)
+    ->build();
+$list = Client::search($params);
+$list = json_decode((string)$list->getBody(), true);
+```
+
+### size
+### sort
+
+```php
+use xudongyss\es\document\highlight\Field;
+use xudongyss\es\document\query\QueryMatch;
+use xudongyss\es\document\Search;
+use xudongyss\es\document\Sort;
+
+$params = Search::create()
+    ->setIndex('jxzrzyhgh')
+    ->setQueryBoolShould(QueryMatch::create()
+        ->setQuery('武汉')
+        ->setField('title'))
+    ->setSourceIncludes(['id', 'title', 'url', 'create_time'])
+    ->setHighlightFields(Field::create()
+        ->setField('title'))
+    ->setFrom(0)
+    ->setSize(5)
+    ->setSort(Sort::create()
+        ->setField('create_time')
+        ->setOrder('desc')
+    )
+    ->build();
+```
+
+### highlight
