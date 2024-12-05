@@ -270,6 +270,9 @@ $params = Search::create()
     ->build();
 ```
 
+### query
+### bool
+
 ### script_fields
 
 ```php
