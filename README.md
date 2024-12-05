@@ -87,7 +87,7 @@ Client::indices()->create($index);
 ## 插入
 ```php
 use xudongyss\es\Client;
-use use xudongyss\es\document\Index;
+use xudongyss\es\document\Index;
 
 $params = Index::create()
     ->setIndex('jxzrzyhgh')
@@ -103,9 +103,42 @@ $params = Index::create()
 Client::index($params);
 ```
 
+### Geopoint field type
+
+```php
+// lat: 纬度，lon: 经度
+$params = DocumentIndex::create()
+    ->setIndex('geo')
+    ->setBody([
+        'name' => '正荣光谷紫阙台',
+        'location' => '30.479665,114.39972',    // lat,lon
+    ])
+    ->build();
+
+$params = DocumentIndex::create()
+    ->setIndex('geo')
+    ->setBody([
+        'name' => '正荣光谷紫阙台',
+        'location' => [114.39972, 30.479665],    // [lon, lat]
+    ])
+    ->build();
+
+$params = DocumentIndex::create()
+    ->setIndex('geo')
+    ->setBody([
+        'name' => '正荣光谷紫阙台',
+        'location' => [
+            'lat' => 30.503151,
+            'lon' => 114.414082,
+        ]
+    ])
+    ->build();
+```
+
 ## 搜索
 
 ### query And bool
+
 #### match
 
 ```php
