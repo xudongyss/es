@@ -61,6 +61,29 @@ $index = Index::create()
 Client::indices()->create($index);
 ```
 
+### Geopoint field type
+
+```php
+use xudongyss\es\Client;
+use xudongyss\es\index\Index;
+use xudongyss\es\index\mappings\properties\Field;
+
+$index = Index::create()
+    ->setIndex('geo')
+    ->setSettingsNumberOfShards(3)
+    ->setSettingsNumberOfReplicas(2)
+    ->setMappingsProperties(Field::create()
+        ->setFiled('name')
+        ->setType('keyword')
+    )
+    ->setMappingsProperties(Field::create()
+        ->setFiled('location')
+        ->setType('geo_point')
+    )
+    ->build();
+Client::indices()->create($index);
+```
+
 ## 插入
 ```php
 use xudongyss\es\Client;
